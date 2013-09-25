@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                template="./../plantillaPortal.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="title"> Líneas Investigación </ui:define>
+    <ui:define name="libreriasJS"> </ui:define>
+    
+    <ui:define name="slider"></ui:define>
+
+    <ui:define name="body">
+        <h:form>
+            
+            <div class="article">                                
+                <h1><span>Líneas de Investigación</span></h1>                                 
+            </div>
+            
+            <p:dataGrid columns="2" paginator="false" rows="6" value="#{lineasInvestigacionPC.listadoLineasInvestigacion}"  emptyMessage="No se encontraton registros" var="lineasInv">
+                
+                <div clas="content">
+                    <div class="mainbar440">
+                        <div class="article">
+                            
+                            <h2><h:outputText value="#{lineasInv.nombreLineaInvestigacion}" /></h2>
+                            <div class="clr"></div>
+                            <p><h:outputText value="#{lineasInv.descripcionLineaInvestigacion}" escape="false" /></p>
+                            <p><br/>
+                                <h:commandLink value="Ver detalles" action="#{lineasInvestigacionPC.goDetallesLineasInvestigacion(lineasInv)}" />
+                            </p>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+            </p:dataGrid>
+            
+        </h:form>
+    </ui:define>
+</ui:composition>

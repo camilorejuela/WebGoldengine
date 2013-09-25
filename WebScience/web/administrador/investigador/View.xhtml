@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"          
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewInvestigadorTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+
+            <h:form>
+                <p:panelGrid columns="2">
+
+                    <h:outputText value="#{bundle.ViewInvestigadorLabel_usuarioInvestigador}"/>
+                    <h:outputText value="#{investigadorController.selected.usuarioInvestigador}" title="#{bundle.ViewInvestigadorTitle_usuarioInvestigador}"/>
+
+                    <h:outputText value="#{bundle.ViewInvestigadorLabel_contrasenaInvestigador}"/>
+                    <h:outputText value="#{investigadorController.selected.contrasenaInvestigador}" title="#{bundle.ViewInvestigadorTitle_contrasenaInvestigador}"/>
+
+                    <h:outputText value="#{bundle.ViewInvestigadorLabel_nombreInvestigador}"/>
+                    <h:outputText value="#{investigadorController.selected.nombreInvestigador}" title="#{bundle.ViewInvestigadorTitle_nombreInvestigador}"/>
+
+                    <h:outputText value="#{bundle.ViewInvestigadorLabel_apellidoInvestigador}"/>
+                    <h:outputText value="#{investigadorController.selected.apellidoInvestigador}" title="#{bundle.ViewInvestigadorTitle_apellidoInvestigador}"/>
+
+                    <h:outputText value="#{bundle.ViewInvestigadorLabel_tituloInvestigador}"/>
+                    <h:outputText value="#{investigadorController.selected.tituloInvestigador}" title="#{bundle.ViewInvestigadorTitle_tituloInvestigador}"/>
+
+                    <h:outputText value="#{bundle.ViewInvestigadorLabel_informacionInvestigador}"/>
+                    <h:outputText value="#{investigadorController.selected.informacionInvestigador}" escape="false" title="#{bundle.ViewInvestigadorTitle_informacionInvestigador}"/>
+
+                    <h:outputText value="#{bundle.ViewInvestigadorLabel_telefonoInvestigador}"/>
+                    <h:outputText value="#{investigadorController.selected.telefonoInvestigador}" title="#{bundle.ViewInvestigadorTitle_telefonoInvestigador}"/>
+
+                    <h:outputText value="#{bundle.ViewInvestigadorLabel_celularInvestigador}"/>
+                    <h:outputText value="#{investigadorController.selected.celularInvestigador}" title="#{bundle.ViewInvestigadorTitle_celularInvestigador}"/>
+
+                    <h:outputText value="#{bundle.ViewInvestigadorLabel_correoInvestigador}"/>
+                    <h:outputText value="#{investigadorController.selected.correoInvestigador}" title="#{bundle.ViewInvestigadorTitle_correoInvestigador}"/>
+
+                    <h:outputText value="#{bundle.ViewInvestigadorLabel_faxInvestigador}"/>
+                    <h:outputText value="#{investigadorController.selected.faxInvestigador}" title="#{bundle.ViewInvestigadorTitle_faxInvestigador}"/>
+
+                    <h:outputText value="#{bundle.ViewInvestigadorLabel_generoInvestigador}"/>
+                    <h:outputText value="#{investigadorController.selected.generoInvestigador}" title="#{bundle.ViewInvestigadorTitle_generoInvestigador}"/>
+
+                    <h:outputText value="#{bundle.ViewInvestigadorLabel_cvlacInvestigador}"/>
+                    <h:outputText value="#{investigadorController.selected.cvlacInvestigador}" title="#{bundle.ViewInvestigadorTitle_cvlacInvestigador}"/>
+
+                    <h:outputText value="#{bundle.ViewInvestigadorLabel_idTipoInvestigador}"/>
+                    <h:outputText value="#{investigadorController.selected.idTipoInvestigador.nombreTipoInvestigador}" title="#{bundle.ViewInvestigadorTitle_idTipoInvestigador}"/>
+
+                    <h:outputText value="#{bundle.ViewInvestigadorLabel_idNivelPermiso}"/>
+                    <h:outputText value="#{investigadorController.selected.idNivelPermiso.nombrePermiso}" title="#{bundle.ViewInvestigadorTitle_idNivelPermiso}"/>
+
+                    <h:outputText value="#{bundle.ViewInvestigadorLabel_imagenPathInvestigador}"/>
+                    <h:outputText value="#{investigadorController.selected.imageInvestigadorPath}" title="#{bundle.ViewInvestigadorTitle_imagenPathInvestigador}"/>
+
+                    <h:outputText value="#{bundle.ViewInvestigadorLabel_idEstado}"/>
+                    <h:outputText value="#{investigadorController.selected.idEstado.nombreEstado}" title="#{bundle.ViewInvestigadorTitle_estadoInvestigador}"/>
+
+                </p:panelGrid>
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewInvestigadorEditLink}"/>
+                <br /><br />
+                <h:commandLink action="#{investigadorController.prepareList}" value="#{bundle.ViewInvestigadorShowAllLink}"/>
+                <br />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>

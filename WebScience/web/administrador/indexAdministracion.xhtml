@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      template="./../plantillaPortal.xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    
+    <ui:define name="title"> Administración </ui:define>
+    <ui:define name="libreriasJS"> </ui:define>
+   
+    <ui:define name="slider"></ui:define>
+    
+    <h:head>
+        <title>Administrador de contenido</title>
+        <h:outputStylesheet library="css"  name="default.css" />
+        <style type="text/css">
+
+            .buttondiv {
+                margin-top: 10px;
+            }
+            .mensajeCaja{
+                position:absolute;
+                width:300px;
+                margin-left:30px;
+                border:1px solid #c93;
+                background:#ffc;
+                padding:3px;
+            }
+            .mensajeCaja0k{
+                position:absolute;
+                width:auto;
+                margin-left:30px;
+                border:1px solid #349534;
+                background:#C9FFCA;
+                padding:3px;
+                font-weight:bold;
+                color:#008000;
+
+            }
+            .mensajeCajaError{
+                position:absolute;
+                width:auto;
+                margin-left:30px;
+                border:1px solid #CC0000;
+                background:#F7CBCA;
+                padding:3px;
+                font-weight:bold;
+                color:#CC0000;
+            }
+
+        </style>
+    </h:head>
+    <ui:define name="body">
+
+        <center>
+            <table align="center" width="80%">
+                <tbody>
+                    <tr>
+                        <td>
+                            <div id="header"> 
+                                <div id="title"> 
+                                    <h1>Administración de Contenido - Portal GIIB</h1> <br/><br/><br/><br/>
+                                </div> 
+                            </div>                             
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div align="center">
+                                <h:form id="form"> 
+                                    <div>Bienvenido al administrador de contenido del Portal GIIB</div><br/><br/>
+                                    <div>
+                                        <h:panelGrid columns="2"  width="373" style="margin-bottom:10px">  
+                                            <f:facet name="header">  
+                                                <p:messages />  
+                                            </f:facet>  
+
+                                            <h:outputLabel for="usuario" value="Usuario :" />                                     
+                                            <p:inputText id="usuario" value="#{loginAuthentication.usuario.usuarioInvestigador}" />  
+
+                                            <h:outputLabel for="contrasena" value="Contrase&ntilde;a :" />                                              
+                                            <p:inputText id="contrasena" value="#{loginAuthentication.usuario.contrasenaInvestigador}" required="true"  requiredMessage="Debe digitar su contrase&ntilde;a."/>  
+                                        </h:panelGrid>  
+                                    </div>
+                                    <div style="margin-top:5px" ></div>
+                                    <div class="buttondiv">
+                                        <p:commandButton ajax="false" action="#{loginAuthentication.login}" value="Acceder" />
+                                        <span id="mensajeCaja" style="display:none"> </span>
+                                    </div>
+                                </h:form>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </center>
+    </ui:define>
+</ui:composition>

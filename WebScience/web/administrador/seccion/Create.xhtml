@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateSeccionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateSeccionLabel_idSeccion}" for="idSeccion" />
+                    <h:inputText id="idSeccion" value="#{seccionController.selected.idSeccion}" title="#{bundle.CreateSeccionTitle_idSeccion}" required="true" requiredMessage="#{bundle.CreateSeccionRequiredMessage_idSeccion}"/>
+                    <h:outputLabel value="#{bundle.CreateSeccionLabel_nombreSeccion}" for="nombreSeccion" />
+                    <h:inputText id="nombreSeccion" value="#{seccionController.selected.nombreSeccion}" title="#{bundle.CreateSeccionTitle_nombreSeccion}" required="true" requiredMessage="#{bundle.CreateSeccionRequiredMessage_nombreSeccion}"/>
+                    <h:outputLabel value="#{bundle.CreateSeccionLabel_estadoSeccion}" for="estadoSeccion" />
+                    <h:inputText id="estadoSeccion" value="#{seccionController.selected.estadoSeccion}" title="#{bundle.CreateSeccionTitle_estadoSeccion}" />
+                    <h:outputLabel value="#{bundle.CreateSeccionLabel_eliminadoSeccion}" for="eliminadoSeccion" />
+                    <h:inputText id="eliminadoSeccion" value="#{seccionController.selected.eliminadoSeccion}" title="#{bundle.CreateSeccionTitle_eliminadoSeccion}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{seccionController.create}" value="#{bundle.CreateSeccionSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{seccionController.prepareList}" value="#{bundle.CreateSeccionShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateSeccionIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

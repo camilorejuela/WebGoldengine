@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListContenidoTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+
+            <h:form >
+
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+
+                <h:outputText escape="false" value="#{bundle.ListContenidoEmpty}" rendered="#{contenidoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{contenidoController.items.rowCount > 0}">                   
+
+                    <p:dataTable value="#{contenidoController.items}" paginator="true" rows="30" var="item" resizableColumns="true" >
+
+                        <p:column width="70">
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{contenidoController.prepareView}" value="#{bundle.ListContenidoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{contenidoController.prepareEdit}" value="#{bundle.ListContenidoEditLink}"/>
+                        </p:column>
+
+                        <p:column width="200">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListContenidoTitle_titulo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.titulo}"/>
+                        </p:column>
+
+                        <p:column width="250">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListContenidoTitle_contenidoResumido}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.contenidoResumido}"/>
+                        </p:column>
+
+                        <p:column width="250">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListContenidoTitle_contenidoDetallado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.contenidoDetallado}"/>
+                        </p:column>
+
+                        <p:column width="70">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListContenidoTitle_idMultimedia}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idMultimedia.nombreMultimedia}"/>
+                        </p:column>
+
+                        <p:column width="120">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListContenidoTitle_idTipoContenido}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idTipoPublicacion.nombreTipoContenido}"/>
+                        </p:column>
+
+                        <p:column width="60">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListContenidoTitle_idEstado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEstado.nombreEstado}"/>
+                        </p:column>
+
+                    </p:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{contenidoController.prepareCreate}" value="#{bundle.ListContenidoCreateLink}"/>
+
+                <br /><br />
+                <img src="#{resource['images/admin/dash/history.gif']}" alt=""/> 
+                <h:link outcome="/administrador/tipoContenido/#{tipoContenidoController.prepareList()}" value="Administrar Tipos de Contenido"/>
+                : Permite Administrar los Tipos de Contenido en el protal.
+
+                <br /><br />
+                <img src="#{resource['images/admin/dash/history.gif']}" alt=""/> 
+                <h:link outcome="/administrador/multimedia/#{multimediaController.prepareList()}" value="Administrar Multimedias de los Contenidos"/>
+                : Permite administrar los Multimedia de los Contenidos existentes.
+
+                <br /><br />
+                <img src="#{resource['images/admin/dash/history.gif']}" alt=""/> 
+                <h:link outcome="/administrador/evento/#{eventoController.prepareList()}" value="Administrar Eventos"/>
+                : Permite administrar los Eventos del grupo.
+
+                <br /><br />
+                <h:link outcome="#{bundle.RutaInicioAdministradorContenido}" value="#{bundle.ListContenidoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                template="./../plantillaPortal.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="title"> Publicaciones </ui:define>
+    <ui:insert name="header"></ui:insert>
+    <ui:define name="libreriasJS"> </ui:define>
+    <ui:define name="slider"> </ui:define>
+
+    <ui:define name="body">
+
+        <div class="article">                                
+            <h1><span>Publicaciones</span></h1>
+        </div>
+
+        <div class="content">
+            <div class="content_resize">
+                <div class="mainbarIzquierdo">  
+
+                    <h:form>
+                        <p:tabView value="#{publicacionesPC.listaTipoProduccion}" var="tipoProd" >
+                            <p:tab title="#{tipoProd.nombreTipoProduccion}" >
+
+                                <p:scrollPanel style="width: 100%; height: 100%; border: none;" mode="native" >
+                                    <p:dataGrid columns="1" value="#{tipoProd.produccionIntelectualList}"  emptyMessage="No se encontraton registros" var="prod">
+                                        <h:outputText value="#{prod.referenciaProduccion}" escape="false" /> 
+                                        <h:outputLink value="#{prod.urlProduccion}">Abstract</h:outputLink>
+                                    </p:dataGrid>
+                                </p:scrollPanel>
+
+                            </p:tab>
+                        </p:tabView>
+                    </h:form>
+
+                </div>
+            </div>
+        </div>
+
+    </ui:define>
+</ui:composition>

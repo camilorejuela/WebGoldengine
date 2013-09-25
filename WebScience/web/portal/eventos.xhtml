@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                template="./../plantillaPortal.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="title"> Eventos </ui:define>
+    <ui:define name="libreriasJS"> </ui:define>
+    
+    <ui:define name="slider"></ui:define>
+
+    <ui:define name="body">
+
+        <div class="article">                                
+            <h1><span>Eventos GIIB</span></h1>
+        </div>
+
+        <h:form id="form" >
+
+            <p:growl id="messages" showDetail="true" /> 
+            <p:schedule id="schedule" value="#{eventosPC.eventModel}" widgetVar="myschedule"  draggable="false" >  
+                <p:ajax event="dateSelect" listener="#{eventosPC.onDateSelect}" update="eventDetails" oncomplete="PF('eventDialog').show()" />  
+                <p:ajax event="eventSelect" listener="#{eventosPC.onEventSelect}" update="eventDetails" oncomplete="PF('eventDialog').show()" />  
+                <p:ajax event="eventMove" listener="#{eventosPC.onEventMove}" update="messages" />  
+                <p:ajax event="eventResize" listener="#{eventosPC.onEventResize}" update="messages" />  
+            </p:schedule>  
+
+            <p:dialog widgetVar="eventDialog" header="Event Details" showEffect="clip" hideEffect="clip" >  
+                <h:panelGrid id="eventDetails" columns="2" >  
+                    <h:outputLabel for="title" value="Title:" />  
+                    <p:inputText id="title" value="#{eventosPC.event.title}" required="true"/>  
+                    <h:outputLabel for="from" value="From:" />  
+                    <p:inputMask id="from" value="#{eventosPC.event.startDate}" mask="99/99/9999">  
+                        <f:convertDateTime pattern="dd/MM/yyyy" />  
+                    </p:inputMask>  
+                    <h:outputLabel for="to" value="To:" />  
+                    <p:inputMask id="to" value="#{eventosPC.event.endDate}" mask="99/99/9999">  
+                        <f:convertDateTime pattern="dd/MM/yyyy" />  
+                    </p:inputMask>  
+
+                    <h:outputLabel for="allDay" value="All Day:" />  
+                    <h:selectBooleanCheckbox id="allDay" value="#{eventosPC.event.allDay}" />  
+
+                    <p:commandButton type="reset" value="Reset" />  
+                    <p:commandButton id="addButton" value="Save" actionListener="#{eventosPC.addEvent}" oncomplete="PF('myschedule').update();PF('eventDialog').hide();"/>  
+                </h:panelGrid>  
+            </p:dialog>  
+
+        </h:form>  
+    </ui:define>
+</ui:composition>

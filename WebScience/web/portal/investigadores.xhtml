@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="./../plantillaPortal.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ui:define name="title"> Investigadores </ui:define>
+    <ui:insert name="header"></ui:insert>
+    <ui:define name="libreriasJS"> </ui:define>
+    <ui:define name="slider"> </ui:define>
+
+    <ui:define name="body">
+
+        <div class="article">                                
+            <h1><span>Investigadores</span></h1>
+        </div>
+
+        <h:form>            
+            <p:accordionPanel value="#{investigadorPC.listaTiposInvestigador}" var="tipoInv" >
+                <p:tab title="#{tipoInv.nombreTipoInvestigador}" >
+                    
+                    <p:dataGrid columns="2" paginator="true" rows="6" value="#{tipoInv.investigadorList}"  emptyMessage="No se encontraton registros" var="inv">
+                        <div class="mainbarInvestigadores">
+                            <div class="articleInvestigadores"> 
+                                
+                                <h1><h:outputText value="#{inv.nombreInvestigador} " /> <h:outputText value="#{inv.apellidoInvestigador}" /> </h1>
+                                <h:graphicImage alt="1" width="120" height="140" url="/WebScience/javax.faces.resource/images/ImagenInvestigador/#{inv.imageInvestigadorPath}.jsf" />
+                                <h2><h:outputText value="#{inv.tituloInvestigador}"/> </h2>
+                                <p><h:commandLink value="Ver detalles" action="#{investigadorPC.goDetallesInvestigador(inv)}" /></p>
+                            
+                            </div>
+                        </div>                        
+                    </p:dataGrid>
+                    
+                </p:tab>
+            </p:accordionPanel>            
+        </h:form>
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                template="./../plantillaPortal.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="title">Noticias</ui:define>
+    <ui:define name="libreriasJS"></ui:define>
+    
+    <ui:define name="slider"></ui:define>
+
+    <ui:define name="body">
+        <h:form>  
+
+            <p:growl id="growl" showDetail="true"/>  
+            
+            <p:fieldset legend="NOTICIAS" > 
+                
+                <p:dataGrid    columns="1" paginator="true" rows="3" value="#{noticiasPC.listadoNoticias}"  emptyMessage="No se encontraton registros" var="noticias" >
+                    <div class="mainbarDerecho">
+                        <h:graphicImage alt="" width="150" height="200" url="/WebScience/javax.faces.resource/images/ImagenInvestigador/#{inv.imageInvestigadorPath}.jsf" />
+                        <h:outputText value="#{noticias.titulo}" /> 
+                        <br/>
+                        <h:outputText value="#{noticias.fechaInicioevento}" >
+                            <f:convertDateTime pattern="yyyy/MM/dd" />
+                        </h:outputText> 
+                        <br/><h:outputText value="#{noticias.contenidoDetallado}" escape="false" />
+                    </div>
+                </p:dataGrid>
+                
+            </p:fieldset> 
+            
+        </h:form> 
+    </ui:define>
+</ui:composition>

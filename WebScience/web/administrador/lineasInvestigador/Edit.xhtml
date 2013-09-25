@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditLineasInvestigadorTitle}"></h:outputText>
+        </ui:define>
+        
+        <ui:define name="body">
+            
+            <h:outputText value="#{bundle.Requerido}"/><br/><br/><br/>
+            
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            
+            <h:form>
+                <h:panelGrid columns="2">
+                    
+                    <h:outputLabel value="#{bundle.EditLineasInvestigadorLabel_investigador}" for="investigador" />
+                    <h:selectOneMenu id="investigador" value="#{lineasInvestigadorController.selected.investigador}" required="true" requiredMessage="#{bundle.EditLineasInvestigadorRequiredMessage_investigador}">
+                        <f:selectItems value="#{investigadorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    
+                    <h:outputLabel value="#{bundle.EditLineasInvestigadorLabel_lineaInvestigacion}" for="lineaInvestigacion" />
+                    <h:selectOneMenu id="lineaInvestigacion" value="#{lineasInvestigadorController.selected.lineaInvestigacion}" required="true" requiredMessage="#{bundle.EditLineasInvestigadorRequiredMessage_lineaInvestigacion}">
+                        <f:selectItems value="#{lineaInvestigacionController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    
+                </h:panelGrid>
+                <h:commandLink action="#{lineasInvestigadorController.update}" value="#{bundle.EditLineasInvestigadorSaveLink}"/>
+                <br /><br />
+                <h:link outcome="View" value="#{bundle.EditLineasInvestigadorViewLink}"/>
+                <br /><br />
+                <h:commandLink action="#{lineasInvestigadorController.prepareList}" value="#{bundle.EditLineasInvestigadorShowAllLink}" immediate="true"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

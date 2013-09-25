@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Administrador de contenido</title>
+        <h:outputStylesheet library="css"  name="default.css" />
+        <script language="javascript" type="text/javascript">
+
+            function abrirVentanaEmergente(url) {
+                window.open(url, 'kcfinder_textbox', 'status=0, toolbar=0, location=0, menubar=0, directories=0, resizable=1, scrollbars=0, width=1000, height=800');
+            }
+        </script>        
+
+    </h:head> 
+    <h:body> 
+
+        <div id="wrap700" class="lltr"> 
+            <div id="header"> 
+                <div id="title"> 
+                    <h1>Administración de Contenido - Portal GIIB</h1> 
+                </div> 
+
+                <div id="logout">
+                    <h:form>
+                        <h:graphicImage url="#{resource['images/admin/dash/logout.png']}" width="16" />
+                        <h:commandLink value="Cerrar Sesi&oacute;n" action="#{loginAuthentication.logout()}"  /> 
+                    </h:form>
+                </div>
+                <div id="path">
+                    <p><h:outputText value=" Bienvenido, #{loginAuthentication.usuarioAutenticado.nombreInvestigador} #{loginAuthentication.usuarioAutenticado.apellidoInvestigador}" /> </p>
+                </div> 
+            </div>
+
+            <br clear="all"/> 
+
+            <div class="contentdiv"> 
+                <div id="wcontent" class="contentinner"><br/>  
+                    <h:panelGrid  id="dashboard" columns="3" columnClasses="dashitem" >
+
+                        <h:column class="dashitem" rendered="#{loginAuthentication.arrayRender[0]}">
+                            <img src="#{resource['images/admin/dash/history.gif']}" alt=""/> 
+                            <h:link outcome="/administrador/contenido/#{contenidoController.prepareList()}" value="Gestión de Contenidos"/>
+                            Permite administrar los contenidos de cada sección del portal.
+                        </h:column>
+
+                        <h:column rendered="#{loginAuthentication.arrayRender[1]}">
+                            <img src="#{resource['images/admin/dash/getcode.gif']}" alt=""/> 
+                            <h:link outcome="/administrador/proyecto/#{proyectoController.prepareList()}" value="Gestión de Proyectos de Investigación"/>
+                            Permite administrar los proyectos de investigación.
+                        </h:column>
+
+                        <h:column rendered="#{loginAuthentication.arrayRender[2]}">
+                            <img src="#{resource['images/admin/dash/dep.gif']}" alt=""/>     
+                            <h:link outcome="/administrador/multimedia/#{multimediaController.prepareList()}" value="Gestión de Referencias Bibliográficas"/>
+                            Gestiona de referencias bibliográficas aportadas por otros investigadores.
+                        </h:column>
+
+                        <h:column rendered="#{loginAuthentication.arrayRender[3]}">
+                            <img src="#{resource['images/admin/dash/visitors.gif']}" alt=""/> 
+                            <h:link outcome="/administrador/investigador/#{investigadorController.prepareList()}" value="Gestión de Investigadores"/>
+                            Permite administrar investigadores como usuarios del sistema.
+                        </h:column>     
+
+                        <h:column rendered="#{loginAuthentication.arrayRender[4]}">
+                            <img src="#{resource['images/admin/dash/arrow.gif']}" alt=""/> 
+                            <h:link outcome="/administrador/lineaInvestigacion/#{lineaInvestigacionController.prepareList()}" value="Gestión de Líneas de Investigación"/>
+                            Permite administrar las líneas de investigación del grupo.
+                        </h:column>
+                        
+                        <h:column rendered="#{loginAuthentication.arrayRender[5]}">
+                            <img src="#{resource['images/admin/dash/canned.gif']}" alt=""/> 
+                            <h:link outcome="/administrador/produccionIntelectual/#{produccionIntelectualController.prepareList()}" value="Gestión de Producción Intelectual"/>
+                            Gestionar productos de investigación por proyecto.
+                        </h:column>   
+                        
+                        <h:column rendered="#{loginAuthentication.arrayRender[6]}">
+                            <img src="#{resource['images/admin/dash/updates.gif']}" alt=""/> 
+                            <a href=''> 
+                                Realizar copias de seguridad</a> 
+                            Permite crear copias de seguridad del sistema.
+                        </h:column>
+
+                        <!--<h:column >
+                            <img src="#{resource['images/admin/dash/locale.gif']}" alt=""/> 
+                            <h:link outcome="/administrador/seccion/#{seccionController.prepareList()}" value="Creación de categorías"/>
+                            Permite administrar las opciones de cada sección del portal.
+                        </h:column>-->
+
+                        <!--<h:column>
+                            <img src="#{resource['images/admin/dash/stat.gif']}" alt=""/> 
+                            <h:link outcome="/administrador/publicacion/#{publicacionController.prepareList()}" value="Noticias y eventos del grupo"/>
+                            Permite administrar noticias y eventos.
+                        </h:column>-->
+                    </h:panelGrid>    
+                </div> 
+            </div>
+            <div style="clear: both;">&nbsp;</div> 
+            <div class="empty_inner" style="">&#160;</div> 
+        </div> 
+        <div id="footer"> 
+            <p id="legal">Grupo de investigaci&oacute;n en Ingenier&iacute;a Biom&eacute;dica - Universidad Industrial de Santander v1.0</p> 
+        </div> 
+
+    </h:body> 
+</html>
+
+

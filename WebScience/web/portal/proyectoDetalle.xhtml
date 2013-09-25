@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                template="./../plantillaPortal.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="title">Proyecto Detalle</ui:define>
+    <ui:define name="libreriasJS"></ui:define>
+   
+    <ui:define name="slider"></ui:define>
+
+    <ui:define name="body">
+        <div clas="content">
+            <div class="mainbarDerecho">
+
+                <h3><h:outputText value="#{proyectoPC.proyectoActual.nombreProyecto}" escape="false"/></h3>
+                <h:graphicImage alt="" width="150" height="175" url="/WebScience/javax.faces.resource/images/ImagenProyecto/#{proyectoPC.proyectoActual.imagenProyecto}.jsf" />
+                <div class="mainbar600">
+
+                    <h:form>                        
+                        <p:tabView effect="" effectDuration="fast">
+
+                            <p:tab title="Descripción">                                
+                                <h:panelGrid columns="1"  cellpadding="1"  >
+                                    <span>Estado del Proyecto: </span> #{proyectoPC.proyectoActual.idEstadoProyecto.nombreEstadoProyecto} <br/><br/>
+                                    <span>Tipo de Proyecto: </span> #{proyectoPC.proyectoActual.idTipoProyecto.nombreTipoProyecto} <br/><br/>
+
+                                    <span>Autores: </span>
+                                    <p:dataList value="#{proyectoPC.proyectoActual.proyectoInvestigadoresList}" var="proyectoInvestigador" >
+                                        <h:commandLink value="#{proyectoInvestigador.investigador.nombreInvestigador} #{proyectoInvestigador.investigador.apellidoInvestigador}" action="#{investigadorPC.goDetallesInvestigador(proyectoInvestigador.investigador)}" />
+                                    </p:dataList>
+
+                                    <span>Línea Investigación: </span> <h:commandLink value="#{proyectoPC.proyectoActual.idLinea.nombreLineaInvestigacion}" action="#{lineasInvestigacionPC.goDetallesLineasInvestigacion(proyectoPC.proyectoActual.idLinea)}" /> <br/><br/>
+                                    <h:outputText value="#{proyectoPC.proyectoActual.descripcionDetalladaProyecto}" escape="false"/>
+                                </h:panelGrid>
+                            </p:tab>
+
+                            <p:tab title="Objetivos">
+                                <h:panelGrid columns="1" cellpadding="1">
+                                    <h:outputText value="#{proyectoPC.proyectoActual.objetivosProyecto}" escape="false" />
+                                </h:panelGrid>
+                            </p:tab>
+
+                            <p:tab title="Resultados">
+                                <h:panelGrid columns="1" cellpadding="1">
+                                    <h:outputText value="#{proyectoPC.proyectoActual.resultadosProyecto}" escape="false" />
+                                </h:panelGrid>
+                            </p:tab>
+
+                            <p:tab title="Producción Resultante">
+                                <p:tabView  value="#{proyectoPC.proyectoActual.productoProyectoList}" var="productoProyecto">
+                                    <p:tab title="#{productoProyecto.nombreProducto}">  
+                                        <h:commandLink value="#{productoProyecto.nombreProducto}" action="#{productoProyecto.enlaceProducto}" />
+                                        <br/><br/>
+                                        Descripción:
+                                        <br/><br/>
+                                        <h:outputText value="#{productoProyecto.descripcionProducto}" escape="false" />
+                                    </p:tab>
+                                </p:tabView>
+                            </p:tab>
+
+                        </p:tabView>                        
+                    </h:form>
+
+                </div>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>

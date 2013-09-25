@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ck="http://code.google.com/ck-jsf-editor">
+
+    <ui:composition template="/template.xhtml">
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditProyectoTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+
+            <h:outputText value="#{bundle.Requerido}"  /><br/><br/><br/>
+
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+
+            <h:form>
+                <h:panelGrid columns="2">
+
+                    <h:outputLabel value="#{bundle.EditProyectoLabel_nombreProyecto}" for="nombreProyecto" />
+                    <h:inputTextarea rows="3" cols="70" id="nombreProyecto" value="#{proyectoController.selected.nombreProyecto}" required="true" requiredMessage="#{bundle.EditProyectoRequiredMessage_nombreProyecto}" />
+
+                    <h:outputLabel value="#{bundle.EditProyectoLabel_descripcionResumidaProyecto}" for="descripcionResumidaProyecto" />
+                    <h:inputText id="descripcionResumidaProyecto" value="#{proyectoController.selected.descripcionResumidaProyecto}" title="#{bundle.EditProyectoTitle_descripcionResumidaProyecto}" size="100"/>
+
+                    <h:outputLabel value="#{bundle.EditProyectoLabel_descripcionDetalladaProyecto}" for="descripcionDetalladaProyecto" />
+                    <ck:editor id="descripcionDetalladaProyecto" value="#{proyectoController.selected.descripcionDetalladaProyecto}" width="850px" uiColor="#aed0ea"  />
+
+                    <h:outputLabel value="#{bundle.EditProyectoLabel_objetivosProyecto}" for="objetivosProyecto" />
+                    <ck:editor id="objetivosProyecto" value="#{proyectoController.selected.objetivosProyecto}" width="850px" uiColor="#aed0ea"  />
+
+                    <h:outputLabel value="#{bundle.EditProyectoLabel_resultadosProyecto}" for="resultadosProyecto" />
+                    <ck:editor id="resultadosProyecto" value="#{proyectoController.selected.resultadosProyecto}" width="850px" uiColor="#aed0ea"  />
+
+                    <h:outputLabel value="#{bundle.EditProyectoLabel_imagenProyecto}" for="imagenProyecto" />
+                    <h:inputText id="imagenProyecto" value="#{proyectoController.selected.imagenProyecto}" title="#{bundle.EditProyectoTitle_imagenProyecto}" size="55"/>
+
+                    <h:outputLabel value="#{bundle.EditProyectoLabel_idTipoProyecto}" for="idTipoProyecto" />
+                    <h:selectOneMenu id="idTipoProyecto" value="#{proyectoController.selected.idTipoProyecto}" title="#{bundle.EditProyectoTitle_idTipoProyecto}" required="true" requiredMessage="#{bundle.EditProyectoRequiredMessage_idTipoProyecto}">
+                        <f:selectItems value="#{tipoProyectoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+
+                    <h:outputLabel value="#{bundle.EditProyectoLabel_idEstadoProyecto}" for="idEstadoProyecto" />
+                    <h:selectOneMenu id="idEstadoProyecto" value="#{proyectoController.selected.idEstadoProyecto}" title="#{bundle.EditProyectoTitle_idEstadoProyecto}" required="true" requiredMessage="#{bundle.EditProyectoRequiredMessage_idEstadoProyecto}">
+                        <f:selectItems value="#{estadoProyectoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+
+                    <h:outputLabel value="#{bundle.EditProyectoLabel_idLinea}" for="idLinea" />
+                    <h:selectOneMenu id="idLinea" value="#{proyectoController.selected.idLinea}" title="#{bundle.EditProyectoTitle_idLinea}" required="true" requiredMessage="#{bundle.EditProyectoRequiredMessage_idLinea}">
+                        <f:selectItems value="#{lineaInvestigacionController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+
+                    <h:outputLabel value="#{bundle.EditProyectoLabel_idEstadoGeneral}" for="idEstadoGeneral" />                   
+                    <h:selectOneMenu id="idEstadoGeneral" value="#{proyectoController.selected.idEstadoGeneral}" title="#{bundle.EditProyectoTitle_idEstadoGeneral}" required="true" requiredMessage="#{bundle.EditProyectoRequiredMessage_idEstadoGeneral}">
+                        <f:selectItems value="#{estadoGeneralController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+
+                </h:panelGrid>
+                <br /><br />
+                <h:commandLink action="#{proyectoController.update}" value="#{bundle.EditProyectoSaveLink}"/>
+                <br /><br />
+                <h:link outcome="View" value="#{bundle.EditProyectoViewLink}"/>
+                <br /><br />
+                <h:commandLink action="#{proyectoController.prepareList}" value="#{bundle.EditProyectoShowAllLink}" immediate="true"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

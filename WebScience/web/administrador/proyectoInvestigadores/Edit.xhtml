@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditProyectoInvestigadoresTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            
+             <h:outputText value="#{bundle.Requerido}"  /><br/><br/><br/>
+
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+
+            <h:form>
+                <h:panelGrid columns="2">
+
+                    <h:outputLabel value="#{bundle.EditProyectoInvestigadoresLabel_investigador}" for="investigador" />
+                    <h:selectOneMenu id="investigador" value="#{proyectoInvestigadoresController.selected.investigador}" title="#{bundle.EditProyectoInvestigadoresTitle_investigador}" required="true" requiredMessage="#{bundle.EditProyectoInvestigadoresRequiredMessage_investigador}">
+                        <f:selectItems value="#{investigadorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+
+                    <h:outputLabel value="#{bundle.EditProyectoInvestigadoresLabel_proyecto}" for="proyecto" />
+                    <h:selectOneMenu id="proyecto" value="#{proyectoInvestigadoresController.selected.proyecto}" title="#{bundle.EditProyectoInvestigadoresTitle_proyecto}" required="true" requiredMessage="#{bundle.EditProyectoInvestigadoresRequiredMessage_proyecto}">
+                        <f:selectItems value="#{proyectoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+
+                    <h:outputLabel value="#{bundle.EditProyectoInvestigadoresLabel_idRol}" for="idRol" />
+                    <h:selectOneMenu id="idRol" value="#{proyectoInvestigadoresController.selected.idRol}" title="#{bundle.EditProyectoInvestigadoresTitle_idRol}" required="true" requiredMessage="#{bundle.EditProyectoInvestigadoresRequiredMessage_idRol}">
+                        <f:selectItems value="#{rolController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+
+                </h:panelGrid>
+                <h:commandLink action="#{proyectoInvestigadoresController.update}" value="#{bundle.EditProyectoInvestigadoresSaveLink}"/>
+                <br /><br />
+                <h:link outcome="View" value="#{bundle.EditProyectoInvestigadoresViewLink}"/>
+                <br /><br />
+                <h:commandLink action="#{proyectoInvestigadoresController.prepareList}" value="#{bundle.EditProyectoInvestigadoresShowAllLink}" immediate="true"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

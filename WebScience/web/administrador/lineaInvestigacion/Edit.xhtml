@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ck="http://code.google.com/ck-jsf-editor">
+
+    <ui:composition template="/template.xhtml">
+        
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditLineaInvestigacionTitle}"></h:outputText>
+        </ui:define>
+        
+        <ui:define name="body">
+
+            <h:outputText value="#{bundle.Requerido}" /><br/><br/><br/>
+
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+
+            <h:form>
+
+                <h:panelGrid columns="2">
+
+                    <h:outputLabel value="#{bundle.EditLineaInvestigacionLabel_nombreLineaInvestigacion}" for="nombreLineaInvestigacion" />
+                    <h:inputText id="nombreLineaInvestigacion" value="#{lineaInvestigacionController.selected.nombreLineaInvestigacion}" title="#{bundle.EditLineaInvestigacionTitle_nombreLineaInvestigacion}" required="true" requiredMessage="#{bundle.EditLineaInvestigacionRequiredMessage_nombreLineaInvestigacion}" size="55"/>
+
+                    <h:outputLabel value="#{bundle.EditLineaInvestigacionLabel_descripcionLineaInvestigacion}" for="descripcionLineaInvestigacion" />
+                    <ck:editor id="descripcionLineaInvestigacion" value="#{lineaInvestigacionController.selected.descripcionLineaInvestigacion}" width="850px" uiColor="#aed0ea" />
+
+                    <h:outputLabel value="#{bundle.EditLineaInvestigacionLabel_detalleLineaInvestigacion}" for="detallelineadeinvestigacion" />
+                    <ck:editor id="detalleLineaInvestigacion" value="#{lineaInvestigacionController.selected.detalleLineaInvestigacion}" width="850px" uiColor="#aed0ea"  />
+                    
+                    <h:outputLabel value="#{bundle.EditLineaInvestigacionLabel_imagenLineaInvestigacion}" for="imagenLineaInvestigacion" />
+                    <h:inputText id="imagenLineaInvestigacion" value="#{lineaInvestigacionController.selected.imagenLineaInvestigacion}" title="#{bundle.EditLineaInvestigacionTitle_imagenLineaInvestigacion}" size="105"/>
+
+                    <h:outputLabel value="#{bundle.EditLineaInvestigacionLabel_idEstado}" />
+                    <h:selectOneMenu id="idEstado" value="#{lineaInvestigacionController.selected.idEstado}"  required="true" requiredMessage="#{bundle.EditLineaInvestigacionRequiredMessage_idEstado}">
+                        <f:selectItems value="#{estadoGeneralController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>                      
+
+                </h:panelGrid>
+                <h:commandLink action="#{lineaInvestigacionController.update}" value="#{bundle.EditLineaInvestigacionSaveLink}"/>
+                <br /><br />
+                <h:commandLink action="#{lineaInvestigacionController.prepareList}" value="#{bundle.EditLineaInvestigacionShowAllLink}" immediate="true"/>
+                <br /><br />
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>

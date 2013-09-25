@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewProyectoTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+
+            <h:form>
+                <p:panelGrid columns="2">
+
+                    <h:outputText value="#{bundle.ViewProyectoLabel_nombreProyecto}"/>
+                    <h:outputText value="#{proyectoController.selected.nombreProyecto}" escape="false"/>
+
+                    <h:outputText value="#{bundle.ViewProyectoLabel_descripcionResumidaProyecto}"/>
+                    <h:outputText value="#{proyectoController.selected.descripcionResumidaProyecto}" title="#{bundle.ViewProyectoTitle_descripcionResumidaProyecto}"/>
+
+                    <h:outputText value="#{bundle.ViewProyectoLabel_descripcionDetalladaProyecto}"/>
+                    <h:outputText value="#{proyectoController.selected.descripcionDetalladaProyecto}" escape="false" title="#{bundle.ViewProyectoTitle_descripcionDetalladaProyecto}"/>
+
+                    <h:outputText value="#{bundle.ViewProyectoLabel_objetivosProyecto}"/>
+                    <h:outputText value="#{proyectoController.selected.objetivosProyecto}" escape="false" title="#{bundle.ViewProyectoTitle_objetivosProyecto}"/>
+
+                    <h:outputText value="#{bundle.ViewProyectoLabel_resultadosProyecto}"/>
+                    <h:outputText value="#{proyectoController.selected.resultadosProyecto}" escape="false" title="#{bundle.ViewProyectoTitle_resultadosProyecto}"/>
+
+                    <h:outputText value="#{bundle.ViewProyectoLabel_imagenProyecto}"/>
+                    <h:outputText value="#{proyectoController.selected.imagenProyecto}" title="#{bundle.ViewProyectoTitle_imagenProyecto}"/>
+
+                    <h:outputText value="#{bundle.ViewProyectoLabel_idTipoProyecto}"/>
+                    <h:outputText value="#{proyectoController.selected.idTipoProyecto.nombreTipoProyecto}" title="#{bundle.ViewProyectoTitle_idTipoProyecto}"/>
+
+                    <h:outputText value="#{bundle.ViewProyectoLabel_idEstadoProyecto}"/>
+                    <h:outputText value="#{proyectoController.selected.idEstadoProyecto.nombreEstadoProyecto}" title="#{bundle.ViewProyectoTitle_idEstadoProyecto}"/>
+
+                    <h:outputText value="#{bundle.ViewProyectoLabel_idLinea}"/>
+                    <h:outputText value="#{proyectoController.selected.idLinea.nombreLineaInvestigacion}" title="#{bundle.ViewProyectoTitle_idLinea}"/>
+
+                    <h:outputText value="#{bundle.ViewProyectoLabel_idEstadoGeneral}"/>
+                    <h:outputText value="#{proyectoController.selected.idEstadoGeneral.nombreEstado}" title="#{bundle.ViewProyectoTitle_idEstadoGeneral}"/>
+
+                </p:panelGrid>
+
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewProyectoEditLink}"/>
+                <br /><br />
+                <h:commandLink action="#{proyectoController.prepareCreate}" value="#{bundle.ViewProyectoCreateLink}" />
+                <br /><br />
+                <h:commandLink action="#{proyectoController.prepareList}" value="#{bundle.ViewProyectoShowAllLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

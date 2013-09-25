@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditEstadoGeneralTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditEstadoGeneralLabel_idEstado}" for="idEstado" />
+                    <h:inputText id="idEstado" value="#{estadoGeneralController.selected.idEstado}" title="#{bundle.EditEstadoGeneralTitle_idEstado}" required="true" requiredMessage="#{bundle.EditEstadoGeneralRequiredMessage_idEstado}"/>
+                    <h:outputLabel value="#{bundle.EditEstadoGeneralLabel_nombreEstado}" for="nombreEstado" />
+                    <h:inputText id="nombreEstado" value="#{estadoGeneralController.selected.nombreEstado}" title="#{bundle.EditEstadoGeneralTitle_nombreEstado}" required="true" requiredMessage="#{bundle.EditEstadoGeneralRequiredMessage_nombreEstado}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{estadoGeneralController.update}" value="#{bundle.EditEstadoGeneralSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditEstadoGeneralViewLink}"/>
+                <br />
+                <h:commandLink action="#{estadoGeneralController.prepareList}" value="#{bundle.EditEstadoGeneralShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditEstadoGeneralIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

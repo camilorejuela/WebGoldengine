@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                template="./../plantillaPortal.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="title">Detalle investigado</ui:define>
+    <ui:insert name="header"></ui:insert>
+    <ui:define name="libreriasJS"> </ui:define>
+    <ui:define name="slider"> </ui:define>
+
+    <ui:define name="body">
+        <div class="content"> 
+            <div class="mainbarDerecho">
+
+                <h3><h:outputText value="#{investigadorPC.investigadorActual.nombreInvestigador} " /> <h:outputText value="#{investigadorPC.investigadorActual.apellidoInvestigador}" /></h3>
+                <h:graphicImage alt="" width="300" height="250" url="/WebScience/javax.faces.resource/images/ImagenInvestigador/#{investigadorPC.investigadorActual.imageInvestigadorPath}.jsf" />
+                <div class="mainbar600">
+
+                    <h:form>
+                        <p:tabView effect="" effectDuration="fast">
+
+                            <p:tab title="Biografía">
+                                <h:panelGrid columns="1"  cellpadding="1"  >
+                                    <p><h:outputText escape="false" value="#{investigadorPC.investigadorActual.informacionInvestigador}" /></p>
+                                </h:panelGrid>
+                            </p:tab>
+
+                            <p:tab title="Proyectos">
+                                <h:panelGrid columns="1" cellpadding="1">
+                                    <p:dataList value="#{investigadorPC.investigadorActual.proyectoInvestigadoresList}" var="proyectoInvestigador" >
+                                        <h:commandLink value="#{proyectoInvestigador.proyecto.nombreProyecto}" action="#{proyectoPC.goDetallesProyecto(proyectoInvestigador.proyecto)}" />
+                                    </p:dataList>
+                                </h:panelGrid>
+                            </p:tab>
+
+                            <p:tab title="Lineas de Investigación">
+                                <h:panelGrid columns="1" cellpadding="1">
+                                    <p:dataList value="#{investigadorPC.investigadorActual.lineasInvestigadorList}" var="lineasInvestigador" >
+                                        <h:commandLink value="#{lineasInvestigador.lineaInvestigacion.nombreLineaInvestigacion}" action="#{lineasInvestigacionPC.goDetallesLineasInvestigacion(lineasInvestigador.lineaInvestigacion)}" />
+                                    </p:dataList>
+                                </h:panelGrid>
+                            </p:tab>
+                            
+                            <p:tab title="Producción Intelectual">
+                                <h:panelGrid columns="1" cellpadding="1">
+                                    <p:dataList value="#{investigadorPC.investigadorActual.investigadorProduccionList}" var="investigadorProduccion" >
+                                        <h:commandLink value="#{investigadorProduccion.produccionIntelectual.nombreProduccion}" action="#{investigadorProduccion.produccionIntelectual.urlProduccion}" />
+                                    </p:dataList>
+                                </h:panelGrid>
+                            </p:tab>
+
+                            <p:tab title="Contacto">
+                                <h:panelGrid columns="1" cellpadding="1">
+                                    <span>Telefono: </span> #{investigadorPC.investigadorActual.telefonoInvestigador} <br/><br/>
+                                    <span>Celular: </span> #{investigadorPC.investigadorActual.celularInvestigador} <br/><br/>
+                                    <span>Fax: </span> #{investigadorPC.investigadorActual.faxInvestigador} <br/><br/>
+                                    <span>Correo ELectrónico: </span> #{investigadorPC.investigadorActual.correoInvestigador} <br/><br/>
+                                    <span>CvLAC: </span> <a href="#{investigadorPC.investigadorActual.cvlacInvestigador}" > ir CvLAC</a> <br/><br/>
+                                </h:panelGrid>
+                            </p:tab>
+
+                        </p:tabView>
+                    </h:form>
+
+                </div>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>

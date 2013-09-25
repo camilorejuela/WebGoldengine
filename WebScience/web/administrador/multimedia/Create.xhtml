@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateMultimediaTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+
+            <h:outputText value="#{bundle.Requerido}"/><br/><br/><br/>
+
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+
+            <h:form>
+                <h:panelGrid columns="2">   
+
+                    <h:outputLabel value="#{bundle.CreateMultimediaLabel_nombreMultimedia}" for="nombreMultimedia" />
+                    <h:inputText id="nombreMultimedia" value="#{multimediaController.selected.nombreMultimedia}" title="#{bundle.CreateMultimediaTitle_nombreMultimedia}" size="55"/>
+
+                    <h:outputLabel value="#{bundle.CreateMultimediaLabel_urlMultimedia}" for="urlMultimedia" />
+                    <h:inputTextarea rows="6" cols="90" value="#{multimediaController.selected.urlMultimedia}" />
+
+                    <h:outputLabel value="#{bundle.CreateMultimediaLabel_idTipoMultimedia}" for="idTipoMultimedia" />
+                    <h:selectOneMenu id="idTipoMultimedia" value="#{multimediaController.selected.idTipoMultimedia}" title="#{bundle.CreateMultimediaTitle_idTipoMultimedia}" required="true" requiredMessage="#{bundle.CreateMultimediaRequiredMessage_idTipoMultimedia}">
+                        <f:selectItems value="#{tipoMultimediaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>                    
+
+                </h:panelGrid>
+                <br /><br />
+                <h:commandLink action="#{multimediaController.create}" value="#{bundle.CreateMultimediaSaveLink}" />
+                <br /><br />
+                <h:commandLink action="#{multimediaController.prepareList}" value="#{bundle.CreateMultimediaShowAllLink}" immediate="true"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

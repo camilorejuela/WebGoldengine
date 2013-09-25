@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="./../plantillaPortal.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ui:define name="title"> Herramientas Software </ui:define>
+    <ui:insert name="header"></ui:insert>
+    <ui:define name="libreriasJS"> </ui:define>
+    <ui:define name="slider"> </ui:define>
+
+    <ui:define name="body">
+
+        <div class="article">                                
+            <h1><span>Herramientas Software</span></h1>
+            <div class="content">
+                <div class="content_resize">
+                    <div class="mainbarIzquierdo">
+                        <h:form>
+                            <p:dataGrid value="#{herramientasSoftwarePC.herramientaSoftware}" emptyMessage="No se encontraton registros"  var="HS">
+
+                                <a href="#{HS.titulo}" target="_blank">#{HS.titulo}</a> 
+                                <h3><h:outputText value="#{HS.contenidoDetallado}" /> </h3>
+
+
+
+                            </p:dataGrid>
+                        </h:form>
+
+                    </div> 
+                </div> 
+            </div> 
+
+        </div> 
+
+
+
+
+
+    </ui:define>
+</ui:composition>

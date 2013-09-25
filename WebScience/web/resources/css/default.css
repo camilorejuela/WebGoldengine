@@ -1,0 +1,139 @@
+/* reset all */
+
+html, body, div, h1, h2, h3, h4, h5, h6, ul, ol, dl, li, dt, dd, p, blockquote, pre, form, fieldset, table, th, td { margin: 0; padding: 0; }
+table { border-collapse:collapse; border-spacing:0; }
+
+body{
+	background: url(#{resource['images/admin/header.gif']}) #fff repeat-x;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 0.8em;
+	line-height: 140%;
+	color: #333333;
+}
+
+/* 100% height with footer, 200 px sidebar	 */
+
+html, body {
+	height: 100%;
+}
+
+body {
+	min-width: 750px;
+}
+
+a {
+	color: #2f7599;
+}
+
+#wrap700  {
+	position:relative;
+	margin: 0px auto -41px;
+	height:auto !important;
+	height:100%;
+	min-height:100%;
+}
+
+
+
+#legal {
+	clear: both;
+	line-height: 30px;
+	padding-top:10px;
+	text-align: center;
+	color: #375C69;
+	margin-bottom: 0px;
+}
+
+
+/* Header */
+
+#header {
+	width: 100%;
+	height: 32px;
+	margin: 0px -2px 10px 0px;
+	padding-top: 10px;
+	padding-bottom: 5px;
+	background: url(#{resource['images/admin/graydot.gif']}) repeat-x left bottom;
+	display: block;
+}
+
+#header {
+	float: left;
+}
+
+
+#header h1 {
+	font-size: 2em;
+	line-height: 32px;
+	color: #494949;
+	margin-left: 40px;
+}
+
+
+
+#path {
+	float: right;
+	padding: 10px 30px 0px 0px;
+	line-height: 23px;
+	display: inline; 
+        font-weight: bold;
+}
+
+#logout {
+	float: right;
+	padding: 10px 20px 0px 0px;
+	line-height: 22px;
+        display: inline;
+}
+
+
+/* dashboard */
+
+#wcontent{
+    	padding-top: 15px;
+}
+
+#dashboard {
+	width: 100%;
+}
+
+#dashboard tr {
+	width:33%;
+	margin: 0px 2em 5em 0px;
+	padding: 5px 2em 5em;
+	vertical-align: top;
+}
+
+.dashitem {
+	width:33%;
+	margin: 0px 2em 5em 0px;
+	padding: 5px 2em 5em;
+	vertical-align: top;
+}
+
+.dashitem:hover {
+}
+
+#dashboard tr a {
+	padding-top:2px;
+	padding-bottom: 10px;
+	display: block;	
+}
+
+.dashitem a {
+	padding-top:2px;
+	padding-bottom: 10px;
+	display: block;	
+}
+
+#dashboard img, #dashlocalesPopup h2 img {
+	float: left;
+	padding-right:10px;
+}
+
+.dashitem img, #dashlocalesPopup h2 img {
+	float: left;
+	padding-right:10px;
+}
+
+

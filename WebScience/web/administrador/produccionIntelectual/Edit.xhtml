@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ck="http://code.google.com/ck-jsf-editor">
+
+    <ui:composition template="/template.xhtml">
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditProduccionIntelectualTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            
+             <h:outputText value="#{bundle.Requerido}"  /><br/><br/><br/>
+
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+
+            <h:form>
+                <h:panelGrid columns="2">
+                    
+                    <h:outputLabel value="#{bundle.EditProduccionIntelectualLabel_nombreProduccion}" for="nombreProduccion" />
+                    <h:inputTextarea rows="5" cols="60" id="nombreProduccion" value="#{produccionIntelectualController.selected.nombreProduccion}"  />
+
+                    <h:outputLabel value="#{bundle.EditProduccionIntelectualLabel_agnoProduccion}" for="agnoProduccion" />
+                    <h:inputText id="agnoProduccion" value="#{produccionIntelectualController.selected.agnoProduccion}" title="#{bundle.EditProduccionIntelectualTitle_agnoProduccion}" />
+
+                    <h:outputLabel value="#{bundle.EditProduccionIntelectualLabel_referenciaProduccion}" for="referenciaProduccion" />
+                    <ck:editor id="referenciaProduccion" value="#{produccionIntelectualController.selected.referenciaProduccion}" width="850px" uiColor="#aed0ea"  />
+
+                    <h:outputLabel value="#{bundle.EditProduccionIntelectualLabel_urlProduccion}" for="nombreProduccion" />
+                    <h:inputTextarea rows="7" cols="80" id="urlProduccion" value="#{produccionIntelectualController.selected.urlProduccion}"  />
+                    
+                    <h:outputLabel value="#{bundle.EditProduccionIntelectualLabel_idTipoProduccion}" for="idTipoProduccion" />
+                    <h:selectOneMenu id="idTipoProduccion" value="#{produccionIntelectualController.selected.idTipoProduccion}" title="#{bundle.EditProduccionIntelectualTitle_idTipoProduccion}" required="true" requiredMessage="#{bundle.EditProduccionIntelectualRequiredMessage_idTipoProduccion}">
+                        <f:selectItems value="#{tipoProduccionController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+
+                    <h:outputLabel value="#{bundle.EditProduccionIntelectualLabel_idEstado}" for="idEstado" />
+                    <h:selectOneMenu id="idEstado" value="#{produccionIntelectualController.selected.idEstado}" title="#{bundle.EditProduccionIntelectualTitle_idEstado}" required="true" requiredMessage="#{bundle.EditProduccionIntelectualRequiredMessage_idEstado}">
+                        <f:selectItems value="#{estadoGeneralController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    
+                </h:panelGrid>
+
+                <h:commandLink action="#{produccionIntelectualController.update}" value="#{bundle.EditProduccionIntelectualSaveLink}"/>
+                <br /><br />
+                <h:link outcome="View" value="#{bundle.EditProduccionIntelectualViewLink}"/>
+                <br /><br />
+                <h:commandLink action="#{produccionIntelectualController.prepareList}" value="#{bundle.EditProduccionIntelectualShowAllLink}" immediate="true"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

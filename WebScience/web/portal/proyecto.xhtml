@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                template="./../plantillaPortal.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="title">Proyectos</ui:define>
+    <ui:define name="libreriasJS"></ui:define>
+   
+    <ui:define name="slider"></ui:define>
+
+    <ui:define name="body">
+
+        <div class="article">                                
+            <h1><span>Proyectos GIIB</span></h1>  
+        </div>
+
+        <h:form>
+            
+            <p:tabView effect="" effectDuration="fast" value="#{proyectoPC.estadoProyectoList}" var="estadoProyectoList">
+
+                <p:tab title="#{estadoProyectoList.nombreEstadoProyecto}" >
+                    
+                    <p:dataGrid columns="2" paginator="true" rows="6" value="#{estadoProyectoList.proyectoList}"  emptyMessage="No se encontraton registros" var="proyecto">
+                        <div class="mainbarInvestigadores">
+                            <div class="articleInvestigadores">  
+
+                                <h3><span><h:outputText value="#{proyecto.nombreProyecto}" escape="false"/></span></h3>
+                                <h:graphicImage alt="" width="150" height="120" url="/WebScience/javax.faces.resource/images/ImagenProyecto/#{proyecto.imagenProyecto}.jsf" />
+                                <p><h:outputText value="#{proyecto.descripcionResumidaProyecto}"/> </p>
+                                <p><br/><h:commandLink value="Ver detalles" action="#{proyectoPC.goDetallesProyecto(proyecto)}" /></p>
+                            
+                            </div>
+                        </div>
+                    </p:dataGrid>
+                    
+                </p:tab>
+
+            </p:tabView>
+        </h:form>
+
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListProyectoInvestigadoresTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form >
+
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+
+                <h:panelGroup rendered="#{proyectoInvestigadoresController.items.rowCount > 0}">
+
+                    <p:dataTable value="#{proyectoInvestigadoresController.items}" paginator="true" rows="30" var="item" resizableColumns="true" style="width:900px;">
+
+                        <p:column width="80">
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{proyectoInvestigadoresController.prepareView}" value="#{bundle.ListProyectoInvestigadoresViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{proyectoInvestigadoresController.prepareEdit}" value="#{bundle.ListProyectoInvestigadoresEditLink}"/>
+                        </p:column>
+
+                        <p:column width="210">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProyectoInvestigadoresTitle_investigador}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.investigador.nombreInvestigador} #{item.investigador.apellidoInvestigador}"/>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProyectoInvestigadoresTitle_proyecto}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.proyecto.nombreProyecto}"/>
+                        </p:column>
+
+                        <p:column width="120">
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListProyectoInvestigadoresTitle_idRol}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idRol.nombreRol}"/>
+                        </p:column>
+
+                    </p:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{proyectoInvestigadoresController.prepareCreate}" value="#{bundle.ListProyectoInvestigadoresCreateLink}"/>
+                <br /><br />
+                <h:link outcome="/administrador/investigador/#{investigadorController.prepareList()}.xhtml?faces-redirect=true" value="#{bundle.ListProyectoInvestigadoresIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

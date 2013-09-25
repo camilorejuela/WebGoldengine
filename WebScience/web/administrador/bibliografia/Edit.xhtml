@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditBibliografiaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditBibliografiaLabel_idBibliografia}" for="idBibliografia" />
+                    <h:inputText id="idBibliografia" value="#{bibliografiaController.selected.idBibliografia}" title="#{bundle.EditBibliografiaTitle_idBibliografia}" required="true" requiredMessage="#{bundle.EditBibliografiaRequiredMessage_idBibliografia}"/>
+                    <h:outputLabel value="#{bundle.EditBibliografiaLabel_nomnreBibliografia}" for="nomnreBibliografia" />
+                    <h:inputText id="nomnreBibliografia" value="#{bibliografiaController.selected.nomnreBibliografia}" title="#{bundle.EditBibliografiaTitle_nomnreBibliografia}" />
+                    <h:outputLabel value="#{bundle.EditBibliografiaLabel_agnoBibliografia}" for="agnoBibliografia" />
+                    <h:inputText id="agnoBibliografia" value="#{bibliografiaController.selected.agnoBibliografia}" title="#{bundle.EditBibliografiaTitle_agnoBibliografia}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditBibliografiaLabel_referenciaBibliografia}" for="referenciaBibliografia" />
+                    <h:inputText id="referenciaBibliografia" value="#{bibliografiaController.selected.referenciaBibliografia}" title="#{bundle.EditBibliografiaTitle_referenciaBibliografia}" />
+                    <h:outputLabel value="#{bundle.EditBibliografiaLabel_urlBibliografia}" for="urlBibliografia" />
+                    <h:inputText id="urlBibliografia" value="#{bibliografiaController.selected.urlBibliografia}" title="#{bundle.EditBibliografiaTitle_urlBibliografia}" />
+                    <h:outputLabel value="#{bundle.EditBibliografiaLabel_idTipoBibliografia}" for="idTipoBibliografia" />
+                    <h:selectOneMenu id="idTipoBibliografia" value="#{bibliografiaController.selected.idTipoBibliografia}" title="#{bundle.EditBibliografiaTitle_idTipoBibliografia}" required="true" requiredMessage="#{bundle.EditBibliografiaRequiredMessage_idTipoBibliografia}">
+                        <f:selectItems value="#{tipoProduccionController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditBibliografiaLabel_idEstado}" for="idEstado" />
+                    <h:selectOneMenu id="idEstado" value="#{bibliografiaController.selected.idEstado}" title="#{bundle.EditBibliografiaTitle_idEstado}" required="true" requiredMessage="#{bundle.EditBibliografiaRequiredMessage_idEstado}">
+                        <f:selectItems value="#{estadoGeneralController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditBibliografiaLabel_idLinea}" for="idLinea" />
+                    <h:selectOneMenu id="idLinea" value="#{bibliografiaController.selected.idLinea}" title="#{bundle.EditBibliografiaTitle_idLinea}" required="true" requiredMessage="#{bundle.EditBibliografiaRequiredMessage_idLinea}">
+                        <f:selectItems value="#{lineaInvestigacionController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{bibliografiaController.update}" value="#{bundle.EditBibliografiaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditBibliografiaViewLink}"/>
+                <br />
+                <h:commandLink action="#{bibliografiaController.prepareList}" value="#{bundle.EditBibliografiaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditBibliografiaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

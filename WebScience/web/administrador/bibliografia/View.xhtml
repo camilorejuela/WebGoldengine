@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewBibliografiaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewBibliografiaLabel_idBibliografia}"/>
+                    <h:outputText value="#{bibliografiaController.selected.idBibliografia}" title="#{bundle.ViewBibliografiaTitle_idBibliografia}"/>
+                    <h:outputText value="#{bundle.ViewBibliografiaLabel_nomnreBibliografia}"/>
+                    <h:outputText value="#{bibliografiaController.selected.nomnreBibliografia}" title="#{bundle.ViewBibliografiaTitle_nomnreBibliografia}"/>
+                    <h:outputText value="#{bundle.ViewBibliografiaLabel_agnoBibliografia}"/>
+                    <h:outputText value="#{bibliografiaController.selected.agnoBibliografia}" title="#{bundle.ViewBibliografiaTitle_agnoBibliografia}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewBibliografiaLabel_referenciaBibliografia}"/>
+                    <h:outputText value="#{bibliografiaController.selected.referenciaBibliografia}" title="#{bundle.ViewBibliografiaTitle_referenciaBibliografia}"/>
+                    <h:outputText value="#{bundle.ViewBibliografiaLabel_urlBibliografia}"/>
+                    <h:outputText value="#{bibliografiaController.selected.urlBibliografia}" title="#{bundle.ViewBibliografiaTitle_urlBibliografia}"/>
+                    <h:outputText value="#{bundle.ViewBibliografiaLabel_idTipoBibliografia}"/>
+                    <h:outputText value="#{bibliografiaController.selected.idTipoBibliografia}" title="#{bundle.ViewBibliografiaTitle_idTipoBibliografia}"/>
+                    <h:outputText value="#{bundle.ViewBibliografiaLabel_idEstado}"/>
+                    <h:outputText value="#{bibliografiaController.selected.idEstado}" title="#{bundle.ViewBibliografiaTitle_idEstado}"/>
+                    <h:outputText value="#{bundle.ViewBibliografiaLabel_idLinea}"/>
+                    <h:outputText value="#{bibliografiaController.selected.idLinea}" title="#{bundle.ViewBibliografiaTitle_idLinea}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{bibliografiaController.destroyAndView}" value="#{bundle.ViewBibliografiaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewBibliografiaEditLink}"/>
+                <br />
+                <h:commandLink action="#{bibliografiaController.prepareCreate}" value="#{bundle.ViewBibliografiaCreateLink}" />
+                <br />
+                <h:commandLink action="#{bibliografiaController.prepareList}" value="#{bundle.ViewBibliografiaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewBibliografiaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListInvestigadorTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form>
+
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+
+                <h:panelGroup rendered="#{investigadorController.items.rowCount > 0}">
+                    <p:dataTable value="#{investigadorController.items}" paginator="true" rows="30" var="item" >
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{investigadorController.prepareView}" value="#{bundle.ListInvestigadorViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{investigadorController.prepareEdit}" value="#{bundle.ListInvestigadorEditLink}"/>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListInvestigadorTitle_usuarioInvestigador}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.usuarioInvestigador}"/>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListInvestigadorTitle_nombreInvestigador}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombreInvestigador}"/>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListInvestigadorTitle_apellidoInvestigador}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.apellidoInvestigador}"/>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListInvestigadorTitle_generoInvestigador}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.generoInvestigador}"/>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListInvestigadorTitle_telefonoInvestigador}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.telefonoInvestigador}"/>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListInvestigadorTitle_celularInvestigador}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.celularInvestigador}"/>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListInvestigadorTitle_correoInvestigador}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.correoInvestigador}"/>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListInvestigadorTitle_idNivelPermiso}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idNivelPermiso.nombrePermiso}"/>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListInvestigadorTitle_idTipoInvestigador}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idTipoInvestigador.nombreTipoInvestigador}"/>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListInvestigadorTitle_tituloInvestigador}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tituloInvestigador}"/>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListInvestigadorTitle_idEstado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEstado.nombreEstado}"/>
+                        </p:column> 
+
+                    </p:dataTable>
+                </h:panelGroup>
+
+                <br/><br/>
+                <h:commandLink action="#{investigadorController.prepareCreate}" value="#{bundle.ListInvestigadorCreateLink}"/>
+                <br/><br/>
+                <img src="#{resource['images/admin/dash/visitors.gif']}" alt=""/> 
+                <h:link outcome="/administrador/tipoInvestigador/#{tipoInvestigadorController.prepareList()}" value="Administrar Tipo de Investigador"/>
+                : Permite administrar los Tipos de Investigadores existentes en el sistema.
+
+                <br/><br/>
+                <img src="#{resource['images/admin/dash/visitors.gif']}" alt=""/>               
+                <h:link outcome="/administrador/permiso/#{permisoController.prepareList()}" value="Administrar Permisos"/>
+                : Permite administrar la configuración de permisos en el sistema.
+
+                <br/><br/>
+                <img src="#{resource['images/admin/dash/visitors.gif']}" alt=""/>               
+                <h:link outcome="/administrador/rol/#{rolController.prepareList()}" value="Administrar Roles de Investigación"/>
+                : Permite administrar los Roles de Investigación que desempeñan los Investigadores.
+
+                <br/><br/>
+                <img src="#{resource['images/admin/dash/visitors.gif']}" alt=""/>               
+                <h:link outcome="/administrador/investigadorProduccion/#{investigadorProduccionController.prepareList()}" value="Asignar Producción Intelectual a Investigadores"/>
+                : Permite asignar la Producción Intelectual a sus respectivos Investigadores.
+
+                <br/><br/>
+                <img src="#{resource['images/admin/dash/visitors.gif']}" alt=""/>               
+                <h:link outcome="/administrador/lineasInvestigador/#{lineasInvestigadorController.prepareList()}" value="Asignar Líneas de Investigación a Investigadores"/>
+                : Permite asignar Líneas de Investigación a Investigadores
+
+                <br/><br/>
+                <img src="#{resource['images/admin/dash/visitors.gif']}" alt=""/>               
+                <h:link outcome="/administrador/proyectoInvestigadores/#{proyectoInvestigadoresController.prepareList()}" value="Asignar Proyectos a Investigadores"/>
+                : Permite asignar Proyectos a Investigadores
+
+                <br/><br/><br/>
+                <h:link outcome="#{bundle.RutaInicioAdministradorContenido}" value="#{bundle.ListInvestigadorIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

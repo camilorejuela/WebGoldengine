@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                template="./../plantillaPortal.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="title"> Quienes Somos </ui:define>
+    <ui:define name="libreriasJS"> </ui:define>
+    <ui:define name="slider"> </ui:define>
+
+    <ui:define name="body">
+
+        <div class="article">
+            <h1><span> ¿Quienes Somos?</span></h1>
+        </div>
+
+        <div class="content">
+            <div class="content_resize">
+                <div class="mainbarIzquierdo">
+                    <h:form>
+                        <p:dataGrid value="#{quienesSomosPC.quinesSomos}" emptyMessage="No se encontraton registros"  var="qunsSms">
+                            <h3><span><p10><h:outputText escape="false" value="#{qunsSms.contenidoDetallado}" /></p10> </span></h3>
+                        </p:dataGrid>
+                    </h:form>
+
+                    <!--<p:fieldset legend="Quienes Somos" >
+                        <h:panelGrid columns="2" cellpadding="10">
+                            <h:outputText value="#{quienesSomosPC.quinesSomos}" />
+                        </h:panelGrid>
+                    </p:fieldset>  -->
+                </div>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
